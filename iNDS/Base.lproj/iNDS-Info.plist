@@ -121,7 +121,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>131</string>
+	<string>120</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>dbapi-8-emm</string>
@@ -171,6 +171,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 	<key>UTExportedTypeDeclarations</key>
