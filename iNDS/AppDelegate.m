@@ -540,33 +540,33 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
         _settingsViewController = [[WCEasySettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
         
         //Controls
-        WCEasySettingsSection *controlsSection = [[WCEasySettingsSection alloc] initWithTitle:@"CONTROLS" subTitle:@""];
+        WCEasySettingsSection *controlsSection = [[WCEasySettingsSection alloc] initWithTitle:@"控制器" subTitle:@""];
         controlsSection.items = @[[[WCEasySettingsSegment alloc] initWithIdentifier:@"controlPadStyle"
-                                                                              title:@"Control Pad Style"
+                                                                              title:@"控制器样式"
                                                                               items:@[
                                                                                       @"D-Pad",
                                                                                       @"Joystick"]],
                                   [[WCEasySettingsSlider alloc] initWithIdentifier:@"controlOpacity"
-                                                                             title:@"Controller Opacity"],
+                                                                             title:@"控制器不透明度"],
                                   [[WCEasySettingsSegment alloc] initWithIdentifier:@"vibrationStr"
-                                                                              title:@"Vibration Strength"
+                                                                              title:@"振动强度"
                                                                               items:@[
-                                                                                      @"Off",
-                                                                                      @"Light",
-                                                                                      @"Heavy"]],
+                                                                                      @"关闭",
+                                                                                      @"弱",
+                                                                                      @"强"]],
                                   [[WCEasySettingsSwitch alloc] initWithIdentifier:@"hapticForVibration"
-                                                                             title:@"Haptic for Vibration"],
+                                                                             title:@"振动触觉"],
                                   [[WCEasySettingsSwitch alloc] initWithIdentifier:@"volumeBumper"
-                                                                             title:@"Volume Button Bumpers"],
+                                                                             title:@"音量按钮缓冲器"],
                                   [[WCEasySettingsSwitch alloc] initWithIdentifier:@"disableTouchScreen"
-                                                                             title:@"Disable Touchscreen"]
+                                                                             title:@"禁用触摸屏"]
                                   
                                   ];
         
         // Video
-        WCEasySettingsSection *graphicsSection = [[WCEasySettingsSection alloc] initWithTitle:@"Video" subTitle:@"Video Options"];
+        WCEasySettingsSection *graphicsSection = [[WCEasySettingsSection alloc] initWithTitle:@"视频" subTitle:@"视频选项"];
         WCEasySettingsOption *filterOptions = [[WCEasySettingsOption alloc] initWithIdentifier:@"videoFilter"
-                                                                                         title:@"Video Filter"
+                                                                                         title:@"视频过滤器"
                                                                                        options:@[@"None",
                                                                                                  @"EPX",
                                                                                                  @"Super Eagle",
@@ -579,7 +579,7 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
                                                                                                  @"High Quality 4x",
                                                                                                  @"BRZ 4x"]
                                                                                optionSubtitles:nil
-                                                                                      subtitle:@"Video filters make the picture sharper but can cause the emulator to run slower. Filters are ordered by lowest quality at the top to best at the bottom. If you're not sure, you can experiment or pick the highest quality that still makes games run at 60fps."];
+                                                                                      subtitle:@"视频过滤器使图片更清晰，但会导致模拟器运行速度变慢。\n过滤器按照从上到下质量最低的顺序排列。\n如果您不确定，您可以尝试或选择仍能以 60fps 运行游戏的最高质量。"];
         graphicsSection.items = @[filterOptions];
         //        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         //            NSArray *filters = @[@(NONE), @(EPX), @(SUPEREAGLE), @(_2XSAI), @(SUPER2XSAI), @(BRZ2x), @(LQ2X), @(BRZ3x), @(HQ2X), @(HQ4X), @(BRZ4x)];
@@ -595,19 +595,19 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
         //        });
         
         // Audio
-        WCEasySettingsSection *audioSection = [[WCEasySettingsSection alloc] initWithTitle:@"Audio" subTitle:@""];
+        WCEasySettingsSection *audioSection = [[WCEasySettingsSection alloc] initWithTitle:@"音频" subTitle:@""];
         audioSection.items = @[[[WCEasySettingsSwitch alloc] initWithIdentifier:@"disableSound"
-                                                                          title:@"Disable Sound"],
+                                                                          title:@"禁用声音"],
                                [[WCEasySettingsSwitch alloc] initWithIdentifier:@"allowExternalAudio"
-                                                                          title:@"Allow External Audio"],
+                                                                          title:@"允许外部音频"],
                                [[WCEasySettingsSwitch alloc] initWithIdentifier:@"synchSound"
-                                                                          title:@"Synchronous Audio"],
+                                                                          title:@"同步音频"],
                                [[WCEasySettingsSwitch alloc] initWithIdentifier:@"enableMic"
-                                                                          title:@"Enable Mic"]];
+                                                                          title:@"启用麦克风"]];
         
         
         //Dropbox
-        WCEasySettingsSection *dropboxSection = [[WCEasySettingsSection alloc] initWithTitle:@"DROPBOX" subTitle:NSLocalizedString(@"ENABLE_DROPBOX", nil)];
+        WCEasySettingsSection *dropboxSection = [[WCEasySettingsSection alloc] initWithTitle:@"同步" subTitle:NSLocalizedString(@"ENABLE_DROPBOX", nil)];
         
         
         
@@ -626,33 +626,33 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
         
         
         // Core
-        WCEasySettingsSection *coreSection = [[WCEasySettingsSection alloc] initWithTitle:@"Core" subTitle:@"Frame Skip with speed up emulation."];
+        WCEasySettingsSection *coreSection = [[WCEasySettingsSection alloc] initWithTitle:@"内核" subTitle:@"带加速仿真的跳帧。"];
         WCEasySettingsOption *engineOption;
         if (sizeof(void*) == 4) { //32bit
             engineOption = [[WCEasySettingsOption alloc] initWithIdentifier:@"cpuMode"
-                                                                      title:@"Emulator Engine"
+                                                                      title:@"模拟器引擎"
                                                                     options:@[@"Interpreter",
                                                                               @"JIT Recompiler (Beta)"
                                                                               ]
                                                             optionSubtitles:nil
-                                                                   subtitle:@"Warning, JIT is still experimental and can slow down or even crash iNDS"];
+                                                                   subtitle:@"警告，JIT 仍处于试验阶段，可能会导致iNDS减慢甚至崩溃。"];
         } else if (sizeof(void*) == 8) {
             engineOption = [[WCEasySettingsOption alloc] initWithIdentifier:@"cpuMode"
-                                                                      title:@"Emulator Engine"
+                                                                      title:@"模拟器引擎"
                                                                     options:@[@"Interpreter"]
                                                             optionSubtitles:nil
-                                                                   subtitle:@"JIT is not yet available for your device."];
+                                                                   subtitle:@"JIT 在您的设备暂不可用。"];
         }
         
-        WCEasySettingsSwitch *adv_timing = [[WCEasySettingsSwitch alloc] initWithIdentifier:@"adv_timing" title:@"Enable Advanced Bus Timing"];
+        WCEasySettingsSwitch *adv_timing = [[WCEasySettingsSwitch alloc] initWithIdentifier:@"adv_timing" title:@"启用高级总线时序"];
         
-        WCEasySettingsSlider2 *depth = [[WCEasySettingsSlider2 alloc] initWithIdentifier:@"depth" title:@"Depth Comparison Threshold" max:500];
+        WCEasySettingsSlider2 *depth = [[WCEasySettingsSlider2 alloc] initWithIdentifier:@"depth" title:@"深度比较阈值" max:500];
         
         coreSection.items = @[engineOption,
                               adv_timing,
                               depth,
                               [[WCEasySettingsSegment alloc] initWithIdentifier:@"frameSkip"
-                                                                          title:@"Frame Skip"
+                                                                          title:@"跳帧"
                                                                           items:@[@"None",
                                                                                   @"1",
                                                                                   @"2",
@@ -662,20 +662,20 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
         
         
         // Auto Save
-        WCEasySettingsSection *emulatorSection = [[WCEasySettingsSection alloc] initWithTitle:@"Auto Save" subTitle:@""];
+        WCEasySettingsSection *emulatorSection = [[WCEasySettingsSection alloc] initWithTitle:@"自动保存" subTitle:@""];
         emulatorSection.items = @[[[WCEasySettingsSwitch alloc] initWithIdentifier:@"periodicSave"
-                                                                             title:@"Auto Save"]];
+                                                                             title:@"自动保存"]];
         
         // UI
         WCEasySettingsSection *interfaceSection = [[WCEasySettingsSection alloc] initWithTitle:@"Interface" subTitle:@""];
         interfaceSection.items = @[[[WCEasySettingsSwitch alloc] initWithIdentifier:@"fullScreenSettings"
-                                                                              title:@"Full Screen Settings"],
+                                                                              title:@"全屏设置"],
                                    [[WCEasySettingsSwitch alloc] initWithIdentifier:@"showFPS"
-                                                                              title:@"Show FPS"]];
-        WCEasySettingsSection *iconSection = [[WCEasySettingsSection alloc] initWithTitle:@"ICONS" subTitle:@"Download the Latest Icon Pack"];
-        WCEasySettingsButton *iconButton = [[WCEasySettingsButton alloc] initWithTitle:@"Update Icons" subtitle:nil callback:^(bool finished) {
+                                                                              title:@"显示FPS"]];
+        WCEasySettingsSection *iconSection = [[WCEasySettingsSection alloc] initWithTitle:@"图标" subTitle:@"下载最新的图标包"];
+        WCEasySettingsButton *iconButton = [[WCEasySettingsButton alloc] initWithTitle:@"更新图标" subtitle:nil callback:^(bool finished) {
             [[iNDSDBManager sharedInstance] closeDB];
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Please wait..." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请稍等..." preferredStyle:UIAlertControllerStyleAlert];
             UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(10, 5, 50, 50)];
             loadingIndicator.hidesWhenStopped = true;
             loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -688,13 +688,13 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
                     [[NSOperationQueue mainQueue] addOperationWithBlock:^ {
                     [self->_settingsViewController dismissViewControllerAnimated:true completion:^{
                         if (result == 0) {
-                            UIAlertController *success = [UIAlertController alertControllerWithTitle:@"Success" message:@"Icons updated successfully." preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertController *success = [UIAlertController alertControllerWithTitle:@"成功" message:@"图标已更新成功。" preferredStyle:UIAlertControllerStyleAlert];
                             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                                   handler:^(UIAlertAction * action) {}];
                             [success addAction:defaultAction];
                             [self->_settingsViewController presentViewController:success animated:YES completion:nil];
                         } else {
-                            UIAlertController *fail = [UIAlertController alertControllerWithTitle:@"Failure" message:@"Icon update failed." preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertController *fail = [UIAlertController alertControllerWithTitle:@"失败" message:@"图标更新失败。" preferredStyle:UIAlertControllerStyleAlert];
                             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                                   handler:^(UIAlertAction * action) {}];
                             [fail addAction:defaultAction];
@@ -706,13 +706,13 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
             }];
         }];
         
-        WCEasySettingsSection *resetSection = [[WCEasySettingsSection alloc] initWithTitle:@"RESET" subTitle:@"Erase All Content"];
-        WCEasySettingsButton *resetButton = [[WCEasySettingsButton alloc] initWithTitle:@"Reset" subtitle:nil callback:^(bool finished) {
+        WCEasySettingsSection *resetSection = [[WCEasySettingsSection alloc] initWithTitle:@"重置" subTitle:@"抹除所有内容"];
+        WCEasySettingsButton *resetButton = [[WCEasySettingsButton alloc] initWithTitle:@"重置" subtitle:nil callback:^(bool finished) {
             
             // prompt the user before deleting all data
-            UIAlertController *warningAlert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will erase all content. Do you want to continue?" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
-            UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            UIAlertController *warningAlert = [UIAlertController alertControllerWithTitle:@"警告" message:@"这将清除所有内容，你要继续吗？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {}];
+            UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
                 
                 NSArray *everything = @[[self batteryDir],
                                         [self dbDir],
@@ -726,7 +726,7 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
                     }
                 }
                 
-                UIAlertController *doneAlert = [UIAlertController alertControllerWithTitle:@"Success" message:@"Content successfully reset!" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *doneAlert = [UIAlertController alertControllerWithTitle:@"成功" message:@"已重置成功！" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                       handler:^(UIAlertAction * action) {}];
                 
@@ -749,8 +749,8 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
         // Credits
         NSString *myVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         NSString *noRar = @"";
-        WCEasySettingsButton *updateButton = [[WCEasySettingsButton alloc] initWithTitle:@"Check for Updates" subtitle:nil callback:^(bool finished) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"Please wait..." preferredStyle:UIAlertControllerStyleAlert];
+        WCEasySettingsButton *updateButton = [[WCEasySettingsButton alloc] initWithTitle:@"检测更新" subtitle:nil callback:^(bool finished) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"请稍等 ..." preferredStyle:UIAlertControllerStyleAlert];
             UIActivityIndicatorView *loadingIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(10, 5, 50, 50)];
             loadingIndicator.hidesWhenStopped = true;
             loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
@@ -790,8 +790,8 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
             }];
         }];
         WCEasySettingsSection *creditsSection = [[WCEasySettingsSection alloc]
-                                                 initWithTitle:@"Info"
-                                                 subTitle:[NSString stringWithFormat:@"Version %@ %@", myVersion, noRar]];
+                                                 initWithTitle:@"应用详情"
+                                                 subTitle:[NSString stringWithFormat:@"iNDS(%@ %@) —— 多啦科技工作室", myVersion, noRar]];
         
         creditsSection.items = @[[[WCEasySettingsUrl alloc] initWithTitle:@"iNDS Team"
                                                                  subtitle:@"Developer"
