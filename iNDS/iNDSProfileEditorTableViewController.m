@@ -42,10 +42,10 @@
     if (inEditingMode) {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"Save Profile";
+                cell.textLabel.text = @"保存配置文件";
                 break;
             case 1:
-                cell.textLabel.text = @"Discard Changes";
+                cell.textLabel.text = @"放弃更改";
                 break;
             default:
                 break;
@@ -53,16 +53,16 @@
     } else {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = @"Edit Profile Layout";
+                cell.textLabel.text = @"编辑布局配置文件";
                 break;
             case 1:
-                cell.textLabel.text = @"Rename Profile";
+                cell.textLabel.text = @"重命名配置文件";
                 break;
             case 2:
-                cell.textLabel.text = @"New Profile";
+                cell.textLabel.text = @"创建配置文件";
                 break;
             case 3:
-                cell.textLabel.text = @"Duplicate Profile";
+                cell.textLabel.text = @"重复配置文件";
                 break;
             default:
                 break;

@@ -667,7 +667,7 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
                                                                              title:@"自动保存"]];
         
         // UI
-        WCEasySettingsSection *interfaceSection = [[WCEasySettingsSection alloc] initWithTitle:@"Interface" subTitle:@""];
+        WCEasySettingsSection *interfaceSection = [[WCEasySettingsSection alloc] initWithTitle:@"界面" subTitle:@""];
         interfaceSection.items = @[[[WCEasySettingsSwitch alloc] initWithIdentifier:@"fullScreenSettings"
                                                                               title:@"全屏设置"],
                                    [[WCEasySettingsSwitch alloc] initWithIdentifier:@"showFPS"
@@ -765,13 +765,13 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
                         if (result == 0 || version == nil) {
                             if ([[version substringFromIndex:1] compare:myVersion options:NSNumericSearch] == NSOrderedDescending) {
                                 // update needed
-                                UIAlertController *update = [UIAlertController alertControllerWithTitle:@"Update Available" message:@"An update is available on the iNDS Github" preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertController *update = [UIAlertController alertControllerWithTitle:@"更新可用" message:@"iNDS的Github主页 上提供了更新" preferredStyle:UIAlertControllerStyleAlert];
                                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                                       handler:^(UIAlertAction * action) {}];
                                 [update addAction:defaultAction];
                                 [self->_settingsViewController presentViewController:update animated:YES completion:nil];
                             } else {
-                                UIAlertController *no_update = [UIAlertController alertControllerWithTitle:@"Up To Date" message:@"Your iNDS is already up to date." preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertController *no_update = [UIAlertController alertControllerWithTitle:@"Up To Date" message:@"您的iNDS已经是最新的。" preferredStyle:UIAlertControllerStyleAlert];
                                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                                       handler:^(UIAlertAction * action) {}];
                                 [no_update addAction:defaultAction];
@@ -779,7 +779,7 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
                             }
                             
                         } else {
-                            UIAlertController *fail = [UIAlertController alertControllerWithTitle:@"Failure" message:@"Checking for update failed." preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertController *fail = [UIAlertController alertControllerWithTitle:@"失败" message:@"检查更新失败。" preferredStyle:UIAlertControllerStyleAlert];
                             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                                                   handler:^(UIAlertAction * action) {}];
                             [fail addAction:defaultAction];
@@ -793,21 +793,26 @@ NSString * const iNDSUserRequestedToPlayROMNotification = @"iNDSUserRequestedToP
                                                  initWithTitle:@"应用详情"
                                                  subTitle:[NSString stringWithFormat:@"iNDS(%@ %@) —— 多啦科技工作室", myVersion, noRar]];
         
-        creditsSection.items = @[[[WCEasySettingsUrl alloc] initWithTitle:@"iNDS Team"
-                                                                 subtitle:@"Developer"
-                                                                      url:@"https://github.com/iNDS-Team"],
-                                 [[WCEasySettingsUrl alloc] initWithTitle:@"NDS4iOS Team"
-                                                                 subtitle:@"Ported DeSmuME to iOS"
-                                                                      url:nil],
-                                 [[WCEasySettingsUrl alloc] initWithTitle:@"DeSmuME"
-                                                                 subtitle:@"Emulation Core"
-                                                                      url:@"http://www.desmume.org/"],
-                                 [[WCEasySettingsUrl alloc] initWithTitle:@"Wiki Creator"
-                                                                 subtitle:@"Pmp174"
-                                                                      url:@"https://twitter.com/Pmp174"],
-                                 [[WCEasySettingsUrl alloc] initWithTitle:@"Source"
-                                                                 subtitle:@"Github"
-                                                                      url:@"https://github.com/iNDS-Team/iNDS"],
+        
+    //
+        creditsSection.items = @[[[WCEasySettingsUrl alloc] initWithTitle:@"多啦科技工作室"
+                                                                 subtitle:@"汉化"
+                                                                      url:@"https://m.tb.cn/h.f0XhwwH"],
+//                                 [[WCEasySettingsUrl alloc] initWithTitle:@"iNDS Team"
+//                                                                 subtitle:@"Developer"
+//                                                                      url:@"https://github.com/iNDS-Team"],
+//                                 [[WCEasySettingsUrl alloc] initWithTitle:@"NDS4iOS Team"
+//                                                                 subtitle:@"Ported DeSmuME to iOS"
+//                                                                      url:nil],
+//                                 [[WCEasySettingsUrl alloc] initWithTitle:@"DeSmuME"
+//                                                                 subtitle:@"Emulation Core"
+//                                                                      url:@"http://www.desmume.org/"],
+//                                 [[WCEasySettingsUrl alloc] initWithTitle:@"Wiki Creator"
+//                                                                 subtitle:@"Pmp174"
+//                                                                      url:@"https://twitter.com/Pmp174"],
+//                                 [[WCEasySettingsUrl alloc] initWithTitle:@"Source"
+//                                                                 subtitle:@"Github"
+//                                                                      url:@"https://github.com/iNDS-Team/iNDS"],
                                  updateButton];
         
         

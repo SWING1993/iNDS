@@ -319,11 +319,11 @@ enum VideoFilter : NSUInteger {
     
     [self pauseEmulation];
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Game Currently Running" message:[NSString stringWithFormat:@"Would you like to end %@ and start %@? All unsaved data will be lost.", self.game.title, game.title] preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"游戏正在运行" message:[NSString stringWithFormat:@"您想结束%@并开始%@？ 所有未保存的数据都将丢失。", self.game.title, game.title] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
         [self resumeEmulation];
     }];
-    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"继续" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [self changeGame:game];
     }];
     
@@ -896,16 +896,16 @@ NSInteger filter = [[NSUserDefaults standardUserDefaults] integerForKey:@"videoF
     
     UITextField *textField = [alert addTextField:@""];
     
-    [alert addButton:@"Save" actionBlock:^(void) {
+    [alert addButton:@"保存" actionBlock:^(void) {
         [self saveStateWithName:textField.text];
         [self toggleSettings:self];
     }];
     
-    [alert addButton:@"Cancel" actionBlock:^(void) {
+    [alert addButton:@"取消" actionBlock:^(void) {
         //[self toggleSettings:self];
     }];
     
-    [alert showEdit:self title:@"Save State" subTitle:@"Name for save state:\n" closeButtonTitle:nil duration:0.0f];
+    [alert showEdit:self title:@"存档" subTitle:@"存档名称:\n" closeButtonTitle:nil duration:0.0f];
 }
 
 - (void)reloadEmulator

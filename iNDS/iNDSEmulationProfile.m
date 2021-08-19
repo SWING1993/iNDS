@@ -198,7 +198,7 @@ static CGFloat const OffsetYForTriggerOniPhoneX = 130.f;
             CFTimeInterval lastVersionAlert = [[NSUserDefaults standardUserDefaults] integerForKey:@"iNDSLastOutOfDateProfileAlert"];
             if (CACurrentMediaTime() - lastVersionAlert > 500) {
                 SCLAlertView * alert = [[SCLAlertView alloc] init];
-                [alert showInfo:emulationView title:@"Unable to load Profiles" subTitle:@"Some profiles were used with a later version of iNDS. These profiles will be hidden until you upgrade iNDS." closeButtonTitle:@"Thanks" duration:0.0];
+                [alert showInfo:emulationView title:@"无法加载配置文件" subTitle:@"一些配置文件与更高版本的iNDS一起使用，这些配置文件将隐藏，直到您升级iNDS。" closeButtonTitle:@"OK" duration:0.0];
                 [[NSUserDefaults standardUserDefaults] setInteger:CACurrentMediaTime() forKey:@"iNDSLastOutOfDateProfileAlert"];
             }
             return nil;
@@ -260,7 +260,7 @@ static CGFloat const OffsetYForTriggerOniPhoneX = 130.f;
     UITextField *textField = [alert addTextField:@""];
     textField.text = [self.name isEqualToString:@"iNDSDefaultProfile"] ? @"" : self.name;
     
-    [alert addButton:@"Save" actionBlock:^(void) {
+    [alert addButton:@"保存" actionBlock:^(void) {
         self.name = textField.text;
         NSString * savePath = [iNDSEmulationProfile pathForProfileName:self.name];
         [NSKeyedArchiver archiveRootObject:self toFile:savePath];
@@ -268,7 +268,7 @@ static CGFloat const OffsetYForTriggerOniPhoneX = 130.f;
         [AppDelegate.sharedInstance.currentEmulatorViewController loadProfile:self];
     }];
     
-    [alert showEdit:[AppDelegate sharedInstance].currentEmulatorViewController title:@"Save Profile" subTitle:@"Name for save profile:\n" closeButtonTitle:showCancel ? @"Cancel":nil duration:0.0f];
+    [alert showEdit:[AppDelegate sharedInstance].currentEmulatorViewController title:@"保存配置文件" subTitle:@"配置文件名称:\n" closeButtonTitle:showCancel ? @"取消":nil duration:0.0f];
     
     
 }
